@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="chrko.sepa.factory" class="ChrKo\Bundles\SepaBundle\Factory">
+            <call method="setDispatcher">
+                <argument type="service" id="event_dispatcher"/>
+            </call>
+        </service>
+        <service id="chrko.sepa.listeners.property_set_listener"
+                 class="ChrKo\Bundles\SepaBundle\Listeners\PropertySetListener">
+            <call method="setDriver">
+                <argument type="service" id="chrko.sepa.driver"/>
+            </call>
+            <tag name="kernel.event_listener" event="chrko.sepa.property_set" method="onPropertySet"/>
+        </service>
+        <service id="chrko.sepa.driver.libsepa" class="ChrKo\Bundles\SepaBundle\Drivers\Libsepa" lazy="true">
+            <argument>%chrko.sepa.driver.option0%</argument>
+            <argument>%chrko.sepa.driver.option1%</argument>
+        </service>
+    </services>
+</container>

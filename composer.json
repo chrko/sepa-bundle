@@ -1,0 +1,29 @@
+{
+    "name": "chrko/sepa-bundle",
+    "type": "symfony-bundle",
+    "description": "abstraction of an sepa xml generation",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Christian Kohlstedde",
+            "email": "christian@kohlsted.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "symfony/symfony": "~2.6",
+        "doctrine/doctrine-bundle": "~1.3",
+        "doctrine/orm": "~2.4"
+    },
+    "suggest": {
+        "ext-sepa": "required to use libsepa-Driver"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChrKo\\Bundles\\SepaBundle\\": ""
+        },
+        "classmap": [
+            "Stubs/"
+        ]
+    }
+}
