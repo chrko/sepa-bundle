@@ -64,14 +64,14 @@ class Mandate
      *
      * @ORM\Column(name="type", type="string", length=5)
      */
-    protected $type = self::RECURRING;
+    protected $type = null;
 
     /**
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=5)
      */
-    protected $state = self::FIRST;
+    protected $state = null;
 
     public function __construct()
     {
@@ -106,7 +106,7 @@ class Mandate
     }
 
     /**
-     * @param bool$mandateReferenceTransmitted
+     * @param bool $mandateReferenceTransmitted
      *
      * @return $this
      */
@@ -124,8 +124,6 @@ class Mandate
     {
         return $this->mandateReferenceTransmitted;
     }
-
-
 
     /**
      * @param $mandateDate
@@ -239,6 +237,8 @@ class Mandate
                         if ($state !== static::LAST) {
                             break;
                         }
+                        break 2;
+                    case null:
                         break 2;
                     default:
                         throw new InvalidStateException('Here is something terrible wrong');
