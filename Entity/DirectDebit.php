@@ -6,6 +6,7 @@ use ChrKo\Bundles\SepaBundle\Traits\EntityId;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Class DirectDebit
@@ -13,6 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity()
  * @ORM\Table(name="chrko_direct_debit")
+ * @Gedmo\Loggable()
  */
 class DirectDebit
 {
@@ -23,6 +25,7 @@ class DirectDebit
      *
      * @ORM\ManyToOne(targetEntity="Creditor")
      * @ORM\JoinColumn(name="creditor_id", referencedColumnName="")
+     * @Gedmo\Versioned()
      */
     protected $creditor;
 
@@ -30,6 +33,7 @@ class DirectDebit
      * @var \DateTime
      *
      * @ORM\Column(name="due_date", type="date")
+     * @Gedmo\Versioned()
      */
     protected $dueDate;
 
@@ -37,6 +41,7 @@ class DirectDebit
      * @var float
      *
      * @ORM\Column(name="amount", type="float")
+     * @Gedmo\Versioned()
      */
     protected $amount = 0;
 
@@ -44,6 +49,7 @@ class DirectDebit
      * @var string
      *
      * @ORM\Column(name="reference", type="string", nullable=true)
+     * @Gedmo\Versioned()
      */
     protected $reference = null;
 

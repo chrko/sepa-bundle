@@ -9,7 +9,8 @@ use ChrKo\Bundles\SepaBundle\Interfaces\BankAccountUser as IBankAccountUser;
 use ChrKo\Bundles\SepaBundle\Traits\BankAccountUser;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints\Collection;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Class Mandate
@@ -17,6 +18,7 @@ use Symfony\Component\Validator\Constraints\Collection;
  *
  * @ORM\Entity()
  * @ORM\Table(name="chrko_mandate")
+ * @Gedmo\Loggable()
  */
 class Mandate
     implements IBankAccountUser
@@ -34,6 +36,7 @@ class Mandate
      * @var string
      *
      * @ORM\Column(name="mandate_reference", type="string", length=35)
+     * @Gedmo\Versioned()
      */
     protected $mandateReference;
 
@@ -41,6 +44,7 @@ class Mandate
      * @var bool
      *
      * @ORM\Column(name="mandate_reference_transmitted", type="boolean")
+     * @Gedmo\Versioned()
      */
     protected $mandateReferenceTransmitted = false;
 
@@ -48,6 +52,7 @@ class Mandate
      * @var \DateTime
      *
      * @ORM\Column(name="mandate_date", type="date")
+     * @Gedmo\Versioned()
      */
     protected $mandateDate;
 
@@ -56,6 +61,7 @@ class Mandate
      *
      * @ORM\ManyToOne(targetEntity="Mandate")
      * @ORM\JoinColumn(name="old_mandate_id", referencedColumnName="id")
+     * @Gedmo\Versioned()
      */
     protected $oldMandate = null;
 
@@ -63,6 +69,7 @@ class Mandate
      * @var string|integer
      *
      * @ORM\Column(name="type", type="string", length=5)
+     * @Gedmo\Versioned()
      */
     protected $type = null;
 
@@ -70,6 +77,7 @@ class Mandate
      * @var string
      *
      * @ORM\Column(name="state", type="string", length=5)
+     * @Gedmo\Versioned()
      */
     protected $state = null;
 

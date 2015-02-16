@@ -8,6 +8,8 @@ use ChrKo\Bundles\SepaBundle\Traits\EntityId;
 use ChrKo\Bundles\SepaBundle\Traits\EventDispatcherAware;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * Class BankAccount
@@ -15,6 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity()
  * @ORM\Table("chrko_bank_account")
+ * @Gedmo\Loggable()
  */
 class BankAccount
     implements IEventDispatcherAware
@@ -25,6 +28,7 @@ class BankAccount
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=100)
+     * @Gedmo\Versioned()
      */
     protected $name;
 
@@ -32,6 +36,7 @@ class BankAccount
      * @var string
      *
      * @ORM\Column(name="iban", type="string", length=34)
+     * @Gedmo\Versioned()
      */
     protected $iban;
 
@@ -39,6 +44,7 @@ class BankAccount
      * @var string
      *
      * @ORM\Column(name="bic", type="string", length=11)
+     * @Gedmo\Versioned()
      */
     protected $bic;
 

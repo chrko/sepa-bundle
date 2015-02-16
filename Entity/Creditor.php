@@ -9,6 +9,7 @@ use ChrKo\Bundles\SepaBundle\Traits\EntityId;
 use ChrKo\Bundles\SepaBundle\Traits\EventDispatcherAware;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -17,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Entity()
  * @ORM\Table(name="chrko_creditor")
+ * @Gedmo\Loggable()
  */
 class Creditor
     implements IBankAccountUser, IEventDispatcherAware
@@ -27,6 +29,7 @@ class Creditor
      * @var string
      *
      * @ORM\Column(name="creditor_identifier", type="string", length=30)
+     * @Gedmo\Versioned()
      */
     protected $creditorIdentifier = null;
 

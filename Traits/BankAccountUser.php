@@ -5,6 +5,7 @@ namespace ChrKo\Bundles\SepaBundle\Traits;
 use ChrKo\Bundles\SepaBundle\Entity\BankAccount;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -18,6 +19,7 @@ trait BankAccountUser
      *
      * @ORM\ManyToOne(targetEntity="BankAccount")
      * @ORM\JoinColumn(name="bank_account_id", referencedColumnName="id")
+     * @Gedmo\Versioned()
      */
     protected $bankAccount;
 
