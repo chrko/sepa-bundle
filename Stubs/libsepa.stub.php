@@ -317,7 +317,7 @@ class SEPA
     {
     }
 
-    public function __call()
+    public function __call($name, $arguments)
     {
         throw new \Exception();
     }
